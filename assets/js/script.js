@@ -76,3 +76,21 @@ const initSlider = (currentSlider) => {
         initSlider(slider[i]);
     }
    
+    //Accordian
+
+    const accordians = document.querySelectorAll("[data-accordian]");
+    let lasActiveAccordian = accordians[0];
+    const initAccordian = (currentAccordian) =>{
+        const accordianBtn = currentAccordian.querySelector("[data-accordian-btn]");
+        const expanAccordain = () =>{
+            if(lasActiveAccordian && lasActiveAccordian != currentAccordian) {
+                lasActiveAccordian.classList.remove("exapanded");
+            }
+            currentAccordian.classList.toggle("exapanded");
+            lasActiveAccordian = currentAccordian;
+        }
+        accordianBtn.addEventListener("click", expanAccordain);
+    };
+    for(let i=0, len=accordians.length; i<len;i++){
+        initAccordian(accordians[i]);
+    }
